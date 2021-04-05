@@ -1,0 +1,8 @@
+pyproject.toml
+setup.py
+src/slashes/__init__.py
+src/slashes/context.py
+src/slashes.egg-info/PKG-INFO
+src/slashes.egg-info/SOURCES.txt
+src/slashes.egg-info/dependency_links.txt
+src/slashes.egg-info/top_level.txt

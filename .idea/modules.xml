@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Slashes.iml" filepath="$PROJECT_DIR$/.idea/Slashes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Slashes-testbot/.idea/Slashes-testbot.iml" filepath="$PROJECT_DIR$/../Slashes-testbot/.idea/Slashes-testbot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../discord.py/.idea/discord.py.iml" filepath="$PROJECT_DIR$/../discord.py/.idea/discord.py.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: slashes
+Version: 0.0.4
+Summary: A python implementation of discord slash commands
+Home-page: https://github.com/Minion3665/slasher
+Author: Nathan Turner
+Author-email: nathan@clicksminuteper.net
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/Minion3665/slasher/issues
+Description: This is a reservation package. In the future this package will hold one man's attempt to make discord slash commands work well, but at this time it does nothing
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown

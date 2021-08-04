@@ -1,7 +1,7 @@
 import setuptools
 
-long_description = "This is a reservation package. In the future this package will hold one man's attempt to make " \
-                   "discord slash commands work well, but at this time it does nothing"
+with open("README.md") as readme:
+    long_description = readme.read()
 
 setuptools.setup(
     name="slashes",
@@ -23,5 +23,4 @@ setuptools.setup(
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.9",
-
 )

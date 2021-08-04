@@ -71,4 +71,6 @@ class Context(commands.Context):
         ctx.command = bot.all_slash_commands.get(invoker)
 
         ctx._args = {arg['name']: arg for arg in slash_data['data']['options']}
+        ctx._reply_token = slash_data['token']
+        ctx._interaction_id = slash_data['id']
         return ctx

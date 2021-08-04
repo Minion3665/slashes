@@ -1,8 +1,9 @@
 import enum
 
+import aiohttp
+
 import discord
 from discord.ext import commands
-
 
 argument_types = {
     str: 3,
@@ -19,6 +20,23 @@ class Command(commands.Command):
         super().__init__(*args, **kwargs)
         self.guild_id = kwargs.get('guild_id')
         self.description = kwargs.get('description', 'No description set')
+        self.auto_ack = kwargs.get('auto_ack', True)
+
+    @staticmethod
+    async def ack(ctx, swallow=False):
+        # noinspection PyProtectedMember
+        token = ctx._reply_token
+        # noinspection PyProtectedMember
+        interaction_id = ctx._interaction_id
+        async with aiohttp.ClientSession() as session:
+            async with session.post(f"https://discord.com/api/v8/interactions/{interaction_id}/{token}/callback",
+                                    json={'type': 2 if swallow else 5}) as resp:
+                pass
+
+    async def invoke(self, ctx):
+        if self.auto_ack:
+            await self.ack(ctx)
+        return await super().invoke(ctx)
 
     # noinspection PyProtectedMember
     async def transform(self, ctx, param):
@@ -31,7 +49,6 @@ class Command(commands.Command):
                 return param.default
             else:
                 raise commands.MissingRequiredArgument(param)
-        print(required, param.name, converter)
         if converter == discord.User:
             return ctx.bot.get_user(param_value) or await ctx.bot.fetch_user(param_value)
         elif converter == discord.abc.GuildChannel:
@@ -68,7 +85,6 @@ class Command(commands.Command):
             raise discord.ClientException(fmt.format(self))
 
         return iterator
-
 
     async def _parse_arguments(self, ctx):
         ctx.args = [ctx] if self.cog is None else [self.cog, ctx]

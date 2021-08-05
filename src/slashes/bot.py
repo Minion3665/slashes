@@ -6,9 +6,9 @@ import zlib
 import aiohttp
 
 from discord.ext import commands
-from . import context
+from . import context_old
 from . import errors
-from . import command as slash_command
+from . import command_old as slash_command
 
 
 class Bot(commands.Bot):
@@ -21,14 +21,14 @@ class Bot(commands.Bot):
         self.loop.create_task(self.register_commands())
         return super().run(*args, **kwargs)
 
-    def get_context(self, message, *, cls=context.Context):
+    def get_context(self, message, *, cls=context_old.Context):
         return super().get_context(message, cls=cls)
 
     def parse_interaction_create(self, data):
         self.dispatch('raw_interaction_create', data)
 
     async def on_raw_interaction_create(self, data):
-        ctx = context.Context.from_slash(self, data)
+        ctx = context_old.Context.from_slash(self, data)
         await self.invoke(ctx)
 
     def add_slash_command(self, command):

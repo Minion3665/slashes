@@ -1,15 +1,16 @@
-from . import context
-from . import bot
+from . import context_old
+from . import cog
 
-Bot = bot.Bot
-AutoShardedBot = bot.AutoShardedBot
+Context = context_old.Context
+Message = context_old.Message
 
-Context = context.Context
-Message = context.Message
+
+def setup(bot):
+    bot.add_cog(cog.Cog(bot))
+
 
 __all__ = (
-    Bot,
-    AutoShardedBot,
+    setup,
     Context,
     Message,
 )
